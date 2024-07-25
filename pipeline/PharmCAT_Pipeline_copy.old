@@ -4,14 +4,13 @@ task run_pharmcat_pipeline {
     input {
         File vcf_file
         String output_directory
-        String optional_params = ""
+        String optional_params = ""  # Option parameters
     }
 
     command <<<
+        set -x -e -o pipefail
         mkdir -p ~{output_directory}
-        mkdir -p data
-        cp ~{vcf_file} data/
-        pharmcat_pipeline data/$(basename ~{vcf_file}) -o ~{output_directory} ~{optional_params}
+        pharmcat_pipeline ~{vcf_file} -o ~{output_directory} ~{optional_params}
     >>>
 
     output {

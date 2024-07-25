@@ -1,0 +1,13 @@
+2024-07-25 16:54:31,163 INFO  - MaterializeWorkflowDescriptorActor [UUID(f98ac70c)]: Parsing workflow as WDL 1.0
+2024-07-25 16:54:31,167 INFO  - MaterializeWorkflowDescriptorActor [UUID(f98ac70c)]: Call-to-Backend assignments: pharmcat_pipeline_workflow.run_pharmcat_pipeline -> PAPIv2-CloudNAT
+2024-07-25 16:54:33,423 INFO  - WorkflowExecutionActor-f98ac70c-5d43-4a17-9af9-5a1ca67a2a96 [UUID(f98ac70c)]: Starting pharmcat_pipeline_workflow.run_pharmcat_pipeline
+2024-07-25 16:54:38,365 INFO  - f98ac70c-5d43-4a17-9af9-5a1ca67a2a96-EngineJobExecutionActor-pharmcat_pipeline_workflow.run_pharmcat_pipeline:NA:1 [UUID(f98ac70c)]: Could not copy a suitable cache hit for f98ac70c:pharmcat_pipeline_workflow.run_pharmcat_pipeline:-1:1. No copy attempts were made.
+2024-07-25 16:54:38,366 INFO  - PipelinesApiAsyncBackendJobExecutionActor [UUID(f98ac70c)pharmcat_pipeline_workflow.run_pharmcat_pipeline:NA:1]: `set -x -e -o pipefail
+mkdir -p gs://fc-374671c8-54cc-4934-93e3-a5c137ea8266/
+pharmcat_pipeline /cromwell_root/fc-374671c8-54cc-4934-93e3-a5c137ea8266/uploads/PharmCAT/pharmcat.example.vcf -o gs://fc-374671c8-54cc-4934-93e3-a5c137ea8266/`
+2024-07-25 16:54:38,697 INFO  - PipelinesApiAsyncBackendJobExecutionActor [UUID(f98ac70c)pharmcat_pipeline_workflow.run_pharmcat_pipeline:NA:1]: Adjusting boot disk size to 11 GB: 10 GB (runtime attributes) + 0 GB (user command image) + 1 GB (Cromwell support images)
+2024-07-25 16:54:42,963 INFO  - PipelinesApiAsyncBackendJobExecutionActor [UUID(f98ac70c)pharmcat_pipeline_workflow.run_pharmcat_pipeline:NA:1]: job id: projects/573148883158/locations/us-central1/operations/2119864915407256373
+2024-07-25 16:54:43,042 INFO  - PipelinesApiAsyncBackendJobExecutionActor [UUID(f98ac70c)pharmcat_pipeline_workflow.run_pharmcat_pipeline:NA:1]: Status change from - to Initializing
+2024-07-25 16:55:06,678 INFO  - PipelinesApiAsyncBackendJobExecutionActor [UUID(f98ac70c)pharmcat_pipeline_workflow.run_pharmcat_pipeline:NA:1]: Status change from Initializing to Running
+2024-07-25 16:59:46,826 INFO  - PipelinesApiAsyncBackendJobExecutionActor [UUID(f98ac70c)pharmcat_pipeline_workflow.run_pharmcat_pipeline:NA:1]: Status change from Running to Failed
+2024-07-25 16:59:49,624 INFO  - $d [UUID(f98ac70c)]: Copying workflow logs from /cromwell-workflow-logs/workflow.f98ac70c-5d43-4a17-9af9-5a1ca67a2a96.log to gs://fc-374671c8-54cc-4934-93e3-a5c137ea8266/submissions/386a41b9-f73c-440f-bb9b-331728b48113/workflow.logs/workflow.f98ac70c-5d43-4a17-9af9-5a1ca67a2a96.log
