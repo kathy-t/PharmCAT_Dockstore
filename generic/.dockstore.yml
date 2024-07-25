@@ -1,8 +1,0 @@
-version: 1.2
-workflows:
-  - subclass: WDL
-    primaryDescriptorPath: /PharmCAT.wdl
-    name: PharmCAT
-    readMePath: /README.md
-    testParameterFiles:
-      - /test.json
