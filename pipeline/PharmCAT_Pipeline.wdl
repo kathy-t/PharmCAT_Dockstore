@@ -8,17 +8,15 @@ task run_pharmcat_pipeline {
     }
 
     command <<<
+        set -x -e -o pipefail
         mkdir -p ~{output_directory}
         mkdir -p data
         cp ~{vcf_file} data/
-        pharmcat_pipeline data/$(basename ~{vcf_file}) -o ~{output_directory} ~{optional_params}
+        pharmcat_pipeline data/$(basename ~{vcf_file}) -o data/$(basename ~{output_directory}) ~{optional_params}
     >>>
 
     output {
-        Array[File] preprocessed_vcf = glob("~{output_directory}/*.preprocessed.vcf*")
-        Array[File] matcher_json = glob("~{output_directory}/*.match.json")
-        Array[File] phenotyper_json = glob("~{output_directory}/*.phenotype.json")
-        Array[File] report_files = glob("~{output_directory}/*.report.*")
+        Array[File] results = glob("data/*")
     }
 
     runtime {
@@ -48,9 +46,6 @@ workflow pharmcat_pipeline_workflow {
     }
 
     output {
-        Array[File] preprocessed_vcf = run_pharmcat_pipeline.preprocessed_vcf
-        Array[File] matcher_json = run_pharmcat_pipeline.matcher_json
-        Array[File] phenotyper_json = run_pharmcat_pipeline.phenotyper_json
-        Array[File] report_files = run_pharmcat_pipeline.report_files
+        Array[File] results = run_pharmcat.results
     }
 }
