@@ -1,18 +1,23 @@
 version 1.0
 
-task run_pharmcat {
+task run_pharmcat_pipeline {
     input {
         File vcf_file
+        String output_directory
+        String optional_params = ""  # Option parameters
     }
 
     command <<<
-        mkdir -p data
-        cp ~{vcf_file} data/
-        pharmcat_pipeline data/$(basename ~{vcf_file})
+        set -x -e -o pipefail
+        mkdir -p ~{output_directory}
+        pharmcat_pipeline ~{vcf_file} -o ~{output_directory} ~{optional_params}
     >>>
 
     output {
-        Array[File] results = glob("data/*")
+        Array[File] preprocessed_vcf = glob("~{output_directory}/*.preprocessed.vcf*")
+        Array[File] matcher_json = glob("~{output_directory}/*.match.json")
+        Array[File] phenotyper_json = glob("~{output_directory}/*.phenotype.json")
+        Array[File] report_files = glob("~{output_directory}/*.report.*")
     }
 
     runtime {
@@ -27,18 +32,24 @@ task run_pharmcat {
     }
 }
 
-workflow pharmcat_workflow {
+workflow pharmcat_pipeline_workflow {
     input {
         File vcf_file
         String output_directory
+        String optional_params = ""
     }
 
-    call run_pharmcat {
+    call run_pharmcat_pipeline {
         input:
-            vcf_file = vcf_file
+            vcf_file = vcf_file,
+            output_directory = output_directory,
+            optional_params = optional_params
     }
 
     output {
-        Array[File] results = run_pharmcat.results
+        Array[File] preprocessed_vcf = run_pharmcat_pipeline.preprocessed_vcf
+        Array[File] matcher_json = run_pharmcat_pipeline.matcher_json
+        Array[File] phenotyper_json = run_pharmcat_pipeline.phenotyper_json
+        Array[File] report_files = run_pharmcat_pipeline.report_files
     }
 }
