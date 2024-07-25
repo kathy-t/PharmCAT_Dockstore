@@ -1,4 +1,4 @@
 # PharmCAT
-PharmCAT v:2.14.0
+PharmCAT v:2.13.0
 
 https://pharmcat.org/

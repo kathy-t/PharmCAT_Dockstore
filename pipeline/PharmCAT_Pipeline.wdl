@@ -16,7 +16,7 @@ task run_pharmcat {
     }
 
     runtime {
-        docker: "pgkb/pharmcat:2.14.0"
+        docker: "pgkb/pharmcat:2.13.0"
         memory: "4 GB"
         cpu: "1"
     }
