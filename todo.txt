@@ -1,0 +1,1 @@
+https://github.com/openwdl/wdl/blob/wdl-1.2/SPEC.md#struct-definition

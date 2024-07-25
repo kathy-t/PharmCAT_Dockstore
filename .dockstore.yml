@@ -7,9 +7,9 @@ workflows:
     testParameterFiles:
       - /pipeline/test.json
 
-  - subclass: WDL
-    primaryDescriptorPath: /generic/PharmCAT.wdl
-    name: PharmCAT
-    readMePath: /generic/README.md
-    testParameterFiles:
-      - /generic/test.json
+  # - subclass: WDL
+  #   primaryDescriptorPath: /generic/PharmCAT.wdl
+  #   name: PharmCAT
+  #   readMePath: /generic/README.md
+  #   testParameterFiles:
+  #     - /generic/test.json
