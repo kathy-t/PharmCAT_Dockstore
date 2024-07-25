@@ -3,8 +3,8 @@ version 1.0
 task run_pharmcat {
     input {
         File vcf_file
-        String pharmcat_command  # Comando principal do PharmCAT, como '-matcher', '-phenotyper', ou '-reporter'
-        String optional_params = ""  # Parâmetros opcionais adicionais para o PharmCAT
+        String pharmcat_command
+        String optional_params = "" 
     }
 
     command <<<
