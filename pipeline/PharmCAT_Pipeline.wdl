@@ -3,18 +3,18 @@ version 1.0
 task run_pharmcat {
     input {
         File vcf_file
-        String output_directory
     }
 
     command <<<
-        mkdir -p ~{output_directory}
         mkdir -p data
         cp ~{vcf_file} data/
-        pharmcat_pipeline data/$(basename ~{vcf_file}) -o ~{output_directory}
+        pharmcat_pipeline data/$(basename ~{vcf_file})
+        cd data
+        ls -a > ls_file.txt
     >>>
 
     output {
-        Array[File] results = glob("~{output_directory}/*")
+        Array[File] results = glob("data/*")
     }
 
     runtime {
@@ -32,13 +32,11 @@ task run_pharmcat {
 workflow pharmcat_workflow {
     input {
         File vcf_file
-        String output_directory
     }
 
     call run_pharmcat {
         input:
-            vcf_file = vcf_file,
-            output_directory = output_directory
+            vcf_file = vcf_file
     }
 
     output {
