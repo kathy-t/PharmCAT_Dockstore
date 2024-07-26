@@ -36,7 +36,7 @@ workflow pharmcat_workflow {
 
     call run_pharmcat {
         input:
-            vcf_file = vcf_file
+            vcf_file = vcf_file,
             output_directory = output_directory
     }
 
