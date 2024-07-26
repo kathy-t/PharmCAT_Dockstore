@@ -1,9 +1,9 @@
-version 1.2
+version 1.0
 
 task run_pharmcat {
     input {
         File vcf_file
-        Directory output_directory
+        String output_directory
     }
 
     command <<<
@@ -32,7 +32,7 @@ task run_pharmcat {
 workflow pharmcat_workflow {
     input {
         File vcf_file
-        Directory output_directory
+        String output_directory
     }
 
     call run_pharmcat {
