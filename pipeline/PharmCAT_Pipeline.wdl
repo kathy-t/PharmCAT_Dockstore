@@ -68,7 +68,7 @@ task run_pharmcat_pipeline {
     }
 }
 
-workflow pharmcat_pipeline_workflow {
+workflow pharmcat_pipeline {
     input {
         File vcf_file
         String output_directory
@@ -119,6 +119,6 @@ workflow pharmcat_pipeline_workflow {
     }
 
     output {
-        Array[File] results = run_pharmcat_pipeline.results
+        Array[File] results_all = run_pharmcat_pipeline.results
     }
 }
