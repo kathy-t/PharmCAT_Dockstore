@@ -1,4 +1,4 @@
-version 1.0
+version 1.2
 
 task run_pharmcat {
     input {
@@ -7,13 +7,14 @@ task run_pharmcat {
     }
 
     command <<<
+        mkdir -p ~{output_directory}
         mkdir -p data
         cp ~{vcf_file} data/
-        pharmcat_pipeline data/$(basename ~{vcf_file})
+        pharmcat_pipeline data/$(basename ~{vcf_file}) -o ~{output_directory}
     >>>
 
     output {
-        Array[File] results = glob("data/*")
+        Array[File] results = glob("~{output_directory}/*")
     }
 
     runtime {
