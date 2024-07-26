@@ -3,14 +3,15 @@ version 1.0
 task run_pharmcat {
     input {
         File vcf_file
+        String output_directory
     }
 
     command <<<
         mkdir -p data
         cp ~{vcf_file} data/
         pharmcat_pipeline data/$(basename ~{vcf_file})
-        cd data
-        ls -a > ls_file.txt
+        mkdir -p ~{output_directory}
+        cp -r data/* ~{output_directory}/
     >>>
 
     output {
@@ -32,11 +33,13 @@ task run_pharmcat {
 workflow pharmcat_workflow {
     input {
         File vcf_file
+        String output_directory
     }
 
     call run_pharmcat {
         input:
-            vcf_file = vcf_file
+            vcf_file = vcf_file,
+            output_directory = output_directory
     }
 
     output {
