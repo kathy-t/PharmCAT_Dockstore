@@ -27,8 +27,28 @@ cacheCopy
 /
 glob-ddfffde5fbd23d9394d3c38faef52e41
 
+files:
+gs://fc-374671c8-54cc-4934-93e3-a5c137ea8266/submissions/8901417a-2299-42e3-8b25-c6560534ccfc/pharmcat_workflow/41da3dbc-bf11-446e-85e6-568873b093de/call-run_pharmcat/cacheCopy/glob-ddfffde5fbd23d9394d3c38faef52e41/pharmcat.example.match.json
+gs://fc-374671c8-54cc-4934-93e3-a5c137ea8266/submissions/8901417a-2299-42e3-8b25-c6560534ccfc/pharmcat_workflow/41da3dbc-bf11-446e-85e6-568873b093de/call-run_pharmcat/cacheCopy/glob-ddfffde5fbd23d9394d3c38faef52e41/pharmcat.example.phenotype.json
+gs://fc-374671c8-54cc-4934-93e3-a5c137ea8266/submissions/8901417a-2299-42e3-8b25-c6560534ccfc/pharmcat_workflow/41da3dbc-bf11-446e-85e6-568873b093de/call-run_pharmcat/cacheCopy/glob-ddfffde5fbd23d9394d3c38faef52e41/pharmcat.example.preprocessed.vcf.bgz
+gs://fc-374671c8-54cc-4934-93e3-a5c137ea8266/submissions/8901417a-2299-42e3-8b25-c6560534ccfc/pharmcat_workflow/41da3dbc-bf11-446e-85e6-568873b093de/call-run_pharmcat/cacheCopy/glob-ddfffde5fbd23d9394d3c38faef52e41/pharmcat.example.report.html
+gs://fc-374671c8-54cc-4934-93e3-a5c137ea8266/submissions/8901417a-2299-42e3-8b25-c6560534ccfc/pharmcat_workflow/41da3dbc-bf11-446e-85e6-568873b093de/call-run_pharmcat/cacheCopy/glob-ddfffde5fbd23d9394d3c38faef52e41/pharmcat.example.vcf.bgz
+gs://fc-374671c8-54cc-4934-93e3-a5c137ea8266/submissions/8901417a-2299-42e3-8b25-c6560534ccfc/pharmcat_workflow/41da3dbc-bf11-446e-85e6-568873b093de/call-run_pharmcat/cacheCopy/glob-ddfffde5fbd23d9394d3c38faef52e41/pharmcat.example.vcf.bgz.csi
+
+
 
 
 ERROR
 Submission f5fc4b59-3467-4cbb-be21-64151b59c189
 Workflow cd7dd24a-6692-4ee2-afe0-4f45a874bd02
+
+
+
+fc-374671c8-54cc-4934-93e3-a5c137ea8266/
+submissions/
+faeb22f1-3d35-4e25-b702-526a8069f4c6/
+pharmcat_workflow/
+7d5db564-df9c-4650-b77b-fd0140d2413f/
+call-run_pharmcat/
+glob-ddfffde5fbd23d9394d3c38faef52e41/
+pharmcat.example.preprocessed.vcf.bgz
