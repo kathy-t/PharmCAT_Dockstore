@@ -12,6 +12,7 @@ task run_pharmcat {
         pharmcat_pipeline data/$(basename ~{vcf_file})
         mkdir -p ~{output_directory}
         cp -r data/* ~{output_directory}/
+        gsutil -m cp -r data/* ~{output_directory}/
     >>>
 
     output {
