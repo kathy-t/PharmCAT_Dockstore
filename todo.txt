@@ -1,5 +1,7 @@
 https://github.com/openwdl/wdl/blob/wdl-1.2/SPEC.md#struct-definition
 
+java -jar /Users/andrerico/works/projects/pharmcat/cromwell-87.jar run test_01.wdl -i test_01.json
+
 
 JOB que deu certo:
 
@@ -52,3 +54,5 @@ pharmcat_workflow/
 call-run_pharmcat/
 glob-ddfffde5fbd23d9394d3c38faef52e41/
 pharmcat.example.preprocessed.vcf.bgz
+
+
