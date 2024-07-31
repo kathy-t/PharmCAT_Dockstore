@@ -67,7 +67,8 @@ task pharmcat_pipeline {
 
     meta {
         author: "Andre Rico"
-        description: "Uma ferramenta para executar o pipeline PharmCAT em um arquivo VCF"
+        email: ""
+        description: "Workflow to run the PharmCAT pipeline on a VCF file"
     }
 }
 
