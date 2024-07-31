@@ -1,14 +1,7 @@
 # WDL to run PharmCAT_Pipeline
-Workflow to run the PharmCAT pipeline on a VCF file.
 
-PharmCAT_Pipeline v:2.13.0  
-[PharmCAT Pipeline Documentation](https://pharmcat.org/using/Running-PharmCAT-Pipeline/)
+This WDL script executes the PharmCAT pipeline on a specified VCF file or a set of VCF files, processing genetic data to provide pharmacogenomic insights. The workflow automates the execution of the PharmCAT pipeline, streamlining the analysis of genetic variants to predict drug response and tailor medical treatment to individual patients' genetic profiles. By leveraging the Workflow Description Language (WDL), this script ensures reproducibility, scalability, and ease of use across various computational environments.
 
-## Purpose
-Runs the PharmCAT pipeline on a given VCF file, processing genetic data to provide pharmacogenomic insights.
-
-## Requirements/Expectations
-- A VCF file with the genetic data to be processed.
 
 ## Input Parameters
 
@@ -63,6 +56,7 @@ To run the WDL with the PharmCAT-Pipeline locally, ensure that Docker and Cromwe
 
 ```sh
 $ java -jar {path}/cromwell-{version}.jar run {path}/pharmCAT_Pipeline.wdl -i {path}/inputs.json
+```
 
 ## Usage Example
 Here is an example of how to provide the inputs in a JSON file:
