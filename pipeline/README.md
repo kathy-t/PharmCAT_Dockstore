@@ -58,6 +58,12 @@ The required dependencies (python3, java, bcftools, bgzip) are included in the p
 ### Execution Platforms
 This WDL script can be executed using [Cromwell](https://github.com/broadinstitute/cromwell) or on platforms such as [Terra](https://support.terra.bio/hc/en-us) and [AnVIL](https://anvil.terra.bio/#) that can be launched from [Dockstore](https://dockstore.org/workflows/github.com/AndreRico/PharmCAT_Dockstore/PharmCAT-Pipeline:main?tab=info).
 
+### Local Execution
+To run the WDL with the PharmCAT-Pipeline locally, ensure that Docker and Cromwell are installed in your execution environment. Then, execute the following command in your bash:
+
+```sh
+$ java -jar {path}/cromwell-{version}.jar run {path}/pharmCAT_Pipeline.wdl -i {path}/inputs.json
+
 ## Usage Example
 Here is an example of how to provide the inputs in a JSON file:
 
