@@ -43,7 +43,7 @@ This WDL script executes the PharmCAT pipeline on a specified VCF file or a set 
 - `Array[File] results_all`: The results of the PharmCAT pipeline. These files are saved in the execution directory of the job.
 
 ## Running the PharmCAT Pipeline
-For convenience, the `pharmcat_pipeline` script simplifies the process of running the entire PharmCAT pipeline (the VCF Preprocessor and the core PharmCAT tool). The necessary dependencies are already included in the provided image.
+For convenience, the `pharmcat_pipeline script simplifies the process of running the entire PharmCAT pipeline (the VCF Preprocessor and the core PharmCAT tool). The necessary dependencies are already included in the provided image.
 
 ### Prerequisites
 The required dependencies (python3, java, bcftools, bgzip) are included in the provided image, so no additional installation is needed.
@@ -58,7 +58,6 @@ To run the WDL with the PharmCAT-Pipeline locally, ensure that Docker and Cromwe
 $ java -jar {path}/cromwell-{version}.jar run {path}/pharmCAT_Pipeline.wdl -i {path}/inputs.json
 ```
 
-## Usage Example
 Here is an example of how to provide the inputs in a JSON file:
 
 ```json
@@ -106,9 +105,13 @@ v:2.13.0
 ## Documentation Links
 - [PharmCAT Documentation](https://pharmcat.org/)
 - [PharmCAT-Pipeline Documentation](https://pharmcat.org/using/Running-PharmCAT-Pipeline/)
+- [PharmCAT Project](https://github.com/PharmGKB/PharmCAT)
 
-## Contact Us
-For any questions or concerns, please direct them to the [PharmCAT GitHub Issues](https://github.com/PharmGKB/PharmCAT/issues)
+## Contact
+For technical questions or bug reports, [file an issue](https://github.com/PharmGKB/PharmCAT/issues).
+
+For general questions about the PharmCAT project, contact [pharmcat@pharmgkb.org](mailto:pharmcat@pharmgkb.org).
+
 
 ## License
 (C) 2024 Your Organization | BSD-3
