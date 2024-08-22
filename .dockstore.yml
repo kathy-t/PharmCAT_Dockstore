@@ -7,4 +7,5 @@ workflows:
       - /pipeline/test.json
     readMePath: /pipeline/README.md
     filters:
-      tags: /v.*/
+      tags:
+        - /v.*/
