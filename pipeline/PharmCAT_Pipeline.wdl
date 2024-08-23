@@ -6,6 +6,12 @@ version 1.0
 # The output is an array of files that are the results of the pipeline save in the plataform where the workflow is running
 
 task pharmcat_pipeline {
+  meta {
+    author: "Andre Rico"
+    email: ""
+    description: "Workflow to run the PharmCAT pipeline on a VCF file"
+  }
+
   input {
     File vcf_file
     String sample_ids = ""
@@ -63,12 +69,6 @@ task pharmcat_pipeline {
     docker: "pgkb/pharmcat:2.13.0"
     memory: max_memory
     cpu: max_concurrent_processes
-  }
-
-  meta {
-    author: "Andre Rico"
-    email: ""
-    description: "Workflow to run the PharmCAT pipeline on a VCF file"
   }
 }
 
