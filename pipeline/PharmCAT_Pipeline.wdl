@@ -6,18 +6,14 @@ version 1.0
 # The output is an array of files that are the results of the pipeline save in the plataform where the workflow is running
 
 task pharmcat_pipeline {
-  meta {
-    author: "ClinPGx"
-    email: "pharmcat@pharmgkb.org"
-    description: "Workflow to run the PharmCAT pipeline on a VCF file"
-  }
-
   input {
     File vcf_file
     String sample_ids = ""
     File? sample_file
     Boolean missing_to_ref = false
     Boolean no_gvcf_check = false
+    Boolean retain_specific_regions = false
+    File? reference_regions
     Boolean run_matcher = false
     Boolean matcher_all_results = false
     Boolean matcher_save_html = false
@@ -36,6 +32,7 @@ task pharmcat_pipeline {
   command <<<
     set -x -e -o pipefail
     mkdir -p data
+    cp ~{vcf_file} data/
 
     pharmcat_pipeline data/$(basename ~{vcf_file}) \
     ~{if sample_ids != "" then '-s ' + sample_ids else ''} \
@@ -55,7 +52,7 @@ task pharmcat_pipeline {
     ~{if reporter_save_json then '-reporterJson' else ''} \
     ~{if base_filename != "" then '-bf ' + base_filename else ''} \
     ~{if delete_intermediate_files then '-del' else ''} \
-    -o data -cp ~{max_concurrent_processes} -cm ~{max_memory}
+    -cp ~{max_concurrent_processes} -cm ~{max_memory}
   >>>
 
   output {
@@ -63,9 +60,15 @@ task pharmcat_pipeline {
   }
 
   runtime {
-    docker: "pgkb/pharmcat:2.15.2"
+    docker: "pgkb/pharmcat:2.13.0"
     memory: max_memory
     cpu: max_concurrent_processes
+  }
+
+  meta {
+    author: "Andre Rico"
+    email: ""
+    description: "Workflow to run the PharmCAT pipeline on a VCF file"
   }
 }
 
