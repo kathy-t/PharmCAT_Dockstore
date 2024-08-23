@@ -6,6 +6,3 @@ workflows:
     testParameterFiles:
       - /pipeline/test.json
     readMePath: /pipeline/README.md
-    filters:
-      tags:
-        - /v.*/
