@@ -7,9 +7,9 @@ version 1.0
 
 task pharmcat_pipeline {
   meta {
-    author: "Andre Rico"
-    email: ""
-    description: "Workflow to run the PharmCAT pipeline on a VCF file"
+    author: "ClinPGx"
+    email: "pharmcat@pharmgkb.org"
+    description: "Workflow to run the PharmCAT pipeline on a VCF file."
   }
 
   input {
