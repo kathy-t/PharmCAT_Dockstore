@@ -9,7 +9,7 @@ task pharmcat_pipeline {
   meta {
     author: "ClinPGx"
     email: "pharmcat@pharmgkb.org"
-    description: "Workflow to run the PharmCAT pipeline on a VCF file."
+    description: "Task to run the PharmCAT pipeline on a VCF file."
   }
 
   input {
@@ -18,8 +18,6 @@ task pharmcat_pipeline {
     File? sample_file
     Boolean missing_to_ref = false
     Boolean no_gvcf_check = false
-    Boolean retain_specific_regions = false
-    File? reference_regions
     Boolean run_matcher = false
     Boolean matcher_all_results = false
     Boolean matcher_save_html = false
@@ -45,8 +43,6 @@ task pharmcat_pipeline {
     ~{if defined(sample_file) then '-S ' + sample_file else ''} \
     ~{if missing_to_ref then '-0' else ''} \
     ~{if no_gvcf_check then '-G' else ''} \
-    ~{if retain_specific_regions then '-R' else ''} \
-    ~{if defined(reference_regions) then '-refRegion ' + reference_regions else ''} \
     ~{if run_matcher then '-matcher' else ''} \
     ~{if matcher_all_results then '-ma' else ''} \
     ~{if matcher_save_html then '-matcherHtml' else ''} \
@@ -79,8 +75,6 @@ workflow pharmcat_pipeline {
     File? sample_file
     Boolean missing_to_ref = false
     Boolean no_gvcf_check = false
-    Boolean retain_specific_regions = false
-    File? reference_regions
     Boolean run_matcher = false
     Boolean matcher_all_results = false
     Boolean matcher_save_html = false
@@ -103,8 +97,6 @@ workflow pharmcat_pipeline {
       sample_file = sample_file,
       missing_to_ref = missing_to_ref,
       no_gvcf_check = no_gvcf_check,
-      retain_specific_regions = retain_specific_regions,
-      reference_regions = reference_regions,
       run_matcher = run_matcher,
       matcher_all_results = matcher_all_results,
       matcher_save_html = matcher_save_html,
