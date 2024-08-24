@@ -4,8 +4,39 @@ workflow pharmcat_pipeline {
   meta {
     author: "ClinPGx"
     email: "pharmcat@pharmgkb.org"
-    description: "This runs the PharmCAT pipeline with VCF input."
+    description: "This workflow runs a VCF file through the PharmCAT pipeline."
   }
+
+  parameter_meta {
+    # description for this is intentionally different from pipeline script because it's hard to
+    # support a file of files on cloud services and directories aren't supported
+    vcf_file: "A VCF file (can be gzipped or bgzipped)."
+    sample_ids: "A comma-separated list of sample IDs.  Only applicable if you have multiple samples and only want to work on specific ones."
+    sample_file: "A file containing a list of sample IDs, one sample ID per line.  Only applicable if you have multiple samples and only want to work on specific ones."
+
+    missing_to_ref: "Assume genotypes at missing PGx sites are 0/0.  DANGEROUS!"
+    no_gvcf_check: "Bypass check if VCF file is in gVCF format."
+    # not including retain_specific_regions and reference_regions
+
+    run_matcher: "Run named allele matcher independently."
+    matcher_all_results: "Return all possible diplotypes, not just top hits."
+    matcher_save_html: "Save named allele matcher results as HTML.'"
+    research_mode: "Comma-separated list of research features to enable: [cyp2d6, combinations]"
+
+    run_phenotyper: "Run phenotyper independently."
+
+    run_reporter: "Run reporter independently."
+    reporter_sources: "Comma-separated list of sources to limit recommendations to: [CPIC, DPWG, FDA]"
+    reporter_extended: "Write an extended report (includes all possible genes and drugs, even if no data is available)"
+    reporter_save_json: "Save reporter results as JSON."
+
+    base_filename: "Prefix for output files.  Defaults to the same base name as the input."
+    delete_intermediate_files: "Delete intermediate PharmCAT files.  Defaults to saving all files."
+
+    max_concurrent_processes: "The maximum number of processes to use when concurrent mode is enabled."
+    max_memory: "The maximum memory PharmCAT should use (e.g. '64G')."
+  }
+
 
   input {
     File vcf_file
@@ -60,7 +91,7 @@ task pharmcat_pipeline_task {
   meta {
     author: "ClinPGx"
     email: "pharmcat@pharmgkb.org"
-    description: "This task run the PharmCAT pipeline with VCF input."
+    description: "This task run a VCF file through the PharmCAT pipeline."
   }
 
   input {
