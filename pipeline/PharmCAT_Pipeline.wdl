@@ -1,15 +1,66 @@
 version 1.0
 
-# It is a single task that runs the PharmCAT pipeline on a VCF file
-# as a single task the workflow is just a wrapper for the task and get the same name
-
-# The output is an array of files that are the results of the pipeline save in the plataform where the workflow is running
-
-task pharmcat_pipeline {
+workflow pharmcat_pipeline {
   meta {
     author: "ClinPGx"
     email: "pharmcat@pharmgkb.org"
-    description: "Task to run the PharmCAT pipeline on a VCF file."
+    description: "This runs the PharmCAT pipeline with VCF input."
+  }
+
+  input {
+    File vcf_file
+    String sample_ids = ""
+    File? sample_file
+    Boolean missing_to_ref = false
+    Boolean no_gvcf_check = false
+    Boolean run_matcher = false
+    Boolean matcher_all_results = false
+    Boolean matcher_save_html = false
+    String research_mode = ""
+    Boolean run_phenotyper = false
+    Boolean run_reporter = false
+    String reporter_sources = ""
+    Boolean reporter_extended = false
+    Boolean reporter_save_json = false
+    String base_filename = ""
+    Boolean delete_intermediate_files = false
+    Int max_concurrent_processes = 1
+    String max_memory = "4G"
+  }
+
+  call pharmcat_pipeline_task {
+    input:
+      vcf_file = vcf_file,
+      sample_ids = sample_ids,
+      sample_file = sample_file,
+      missing_to_ref = missing_to_ref,
+      no_gvcf_check = no_gvcf_check,
+      run_matcher = run_matcher,
+      matcher_all_results = matcher_all_results,
+      matcher_save_html = matcher_save_html,
+      research_mode = research_mode,
+      run_phenotyper = run_phenotyper,
+      run_reporter = run_reporter,
+      reporter_sources = reporter_sources,
+      reporter_extended = reporter_extended,
+      reporter_save_json = reporter_save_json,
+      base_filename = base_filename,
+      delete_intermediate_files = delete_intermediate_files,
+      max_concurrent_processes = max_concurrent_processes,
+      max_memory = max_memory
+  }
+
+  output {
+    Array[File] results = pharmcat_pipeline_task.results
+  }
+}
+
+
+task pharmcat_pipeline_task {
+  meta {
+    author: "ClinPGx"
+    email: "pharmcat@pharmgkb.org"
+    description: "This task run the PharmCAT pipeline with VCF input."
   }
 
   input {
@@ -68,51 +119,3 @@ task pharmcat_pipeline {
   }
 }
 
-workflow pharmcat_pipeline {
-  input {
-    File vcf_file
-    String sample_ids = ""
-    File? sample_file
-    Boolean missing_to_ref = false
-    Boolean no_gvcf_check = false
-    Boolean run_matcher = false
-    Boolean matcher_all_results = false
-    Boolean matcher_save_html = false
-    String research_mode = ""
-    Boolean run_phenotyper = false
-    Boolean run_reporter = false
-    String reporter_sources = ""
-    Boolean reporter_extended = false
-    Boolean reporter_save_json = false
-    String base_filename = ""
-    Boolean delete_intermediate_files = false
-    Int max_concurrent_processes = 1
-    String max_memory = "4G"
-  }
-
-  call pharmcat_pipeline {
-    input:
-      vcf_file = vcf_file,
-      sample_ids = sample_ids,
-      sample_file = sample_file,
-      missing_to_ref = missing_to_ref,
-      no_gvcf_check = no_gvcf_check,
-      run_matcher = run_matcher,
-      matcher_all_results = matcher_all_results,
-      matcher_save_html = matcher_save_html,
-      research_mode = research_mode,
-      run_phenotyper = run_phenotyper,
-      run_reporter = run_reporter,
-      reporter_sources = reporter_sources,
-      reporter_extended = reporter_extended,
-      reporter_save_json = reporter_save_json,
-      base_filename = base_filename,
-      delete_intermediate_files = delete_intermediate_files,
-      max_concurrent_processes = max_concurrent_processes,
-      max_memory = max_memory
-  }
-
-  output {
-    Array[File] results_all = pharmcat_pipeline.results
-  }
-}
